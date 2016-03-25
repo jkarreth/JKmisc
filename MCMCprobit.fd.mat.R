@@ -1,7 +1,11 @@
-MCMCprobit.fd.mat <- function(model_matrix, mcmc_out, credint = c(0.05, 0.95), percentiles = c(0.25, 0.75)){
+# R function to calculate first differences after a Bayesian probit model 
+# Johannes Karreth
 
-# model_matrix: model matrix, including intercept, focal pred. is second column
-# mcmc_out: an MCMCprobit object
+# model_matrix: model matrix, including intercept
+# mcmc_out: posterior distributions of all probit coefficients, 
+#  in matrix form - can easily be created from rstan, MCMCpack, R2jags, etc.
+
+MCMCprobit.fd.mat <- function(model_matrix, mcmc_out, credint = c(0.05, 0.95), percentiles = c(0.25, 0.75)){
 
 fd.mat <- matrix(NA, ncol = 3, nrow = ncol(model_matrix) - 1)
 colnames(fd.mat) <- c("Median", "Lower90", "Upper90")

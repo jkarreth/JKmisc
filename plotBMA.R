@@ -1,9 +1,8 @@
-# Code for plotting posterior densities after BMA, using bic.glm
+# R function for plotting posterior densities after BMA, using bic.glm
 # Johannes Karreth
 
-# Purpose: 
-
-# Adapted from the BMA package source 
+# Purpose: plot posterior probabilities of covariates in a GLM
+# Slightly customized plotting function that is taken from the BMA package source 
 # <https://cran.r-project.org/web/packages/BMA/index.html>
 
 # For this function to work, you need to install the "BMA" package.

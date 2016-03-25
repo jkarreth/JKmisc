@@ -1,4 +1,4 @@
-# Code for calculating robust standard errors for OLS
+# R function for calculating robust standard errors for OLS
 # Johannes Karreth
 
 # Purpose: create a vector of heteroskedastcity-robust SEs

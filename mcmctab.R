@@ -1,4 +1,4 @@
-# Code for summarizing MCMC output in a regression-style table
+# R function for summarizing MCMC output in a regression-style table
 # Johannes Karreth
 
 # I use this function mainly for teaching.
@@ -9,6 +9,9 @@
 
 # Arguments: 
 # sims: output from R2jags, rjags, R2WinBUGS, R2OpenBUGS, MCMCpack
+# This also works with rstan objects, but you need to pass them on as 
+# MCMC lists. If "fit" is the rstan object, pass it to this function as
+# mcmctab(sims = rstan::As.mcmc.list(fit))
 
 mcmctab <- function(sims, ci = 0.95) 
 {

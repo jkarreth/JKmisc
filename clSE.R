@@ -1,4 +1,4 @@
-# Code for calculating cluster-robust standard errors for OLS
+# R function for calculating cluster-robust standard errors for OLS
 # Johannes Karreth
 
 # Purpose: create a vector of cluster-robust SEs
