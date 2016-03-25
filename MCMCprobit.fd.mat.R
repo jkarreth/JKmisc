@@ -1,0 +1,39 @@
+MCMCprobit.fd.mat <- function(model_matrix, mcmc_out, credint = c(0.05, 0.95), percentiles = c(0.25, 0.75)){
+
+# model_matrix: model matrix, including intercept, focal pred. is second column
+# mcmc_out: an MCMCprobit object
+
+fd.mat <- matrix(NA, ncol = 3, nrow = ncol(model_matrix) - 1)
+colnames(fd.mat) <- c("Median", "Lower90", "Upper90")
+rownames(fd.mat) <- colnames(model_matrix)[-1]
+
+for (i in 2:ncol(model_matrix)){
+
+X <- matrix(rep(apply(X = model_matrix,
+                    MARGIN = 2,
+                    FUN = function(x) median(x)),
+                  times = 2),
+                  nrow = 2,
+                  byrow = TRUE)
+X[, i] <- ifelse(length(unique(model_matrix[, i])) == 2 & range(model_matrix[, i]) == c(0, 1), c(0, 1), 
+			quantile(model_matrix[, i], probs = percentiles))
+
+# X[, i] <- quantile(model_matrix[, i], probs = percentiles)
+
+pp <- pnorm(t(X %*% t(mcmc_out)))
+
+fd <- pp[, 2] - pp[, 1]
+
+fd.mat[i-1, 1] <- quantile(fd, probs = c(0.5))
+fd.mat[i-1, 2] <- quantile(fd, probs = c(credint[1]))
+fd.mat[i-1, 3] <- quantile(fd, probs = c(credint[2]))
+
+}
+
+fd.dat <- as.data.frame(fd.mat)
+fd.dat$VarName <- rownames(fd.mat)
+fd.dat$VarID <- row(fd.mat)[, 1]
+
+return(fd.dat)
+
+}
