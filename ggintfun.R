@@ -100,8 +100,21 @@ ggintfun <- function (obj, varnames, varlabs,
    var3 <- vcov(obj)[b3.pos, b3.pos]
    cov13 <- vcov(obj)[b1.pos, b3.pos]
    
-   s1 <- rseq(obj@frame[v1])
-   s2 <- rseq(obj@frame[v2])
+   if(length(unique(model.matrix(obj)[, paste(v1)])) == 2){
+     s1 <- c(min(model.matrix(obj)[, paste(v1)]), max(model.matrix(obj)[, paste(v1)]))
+   }
+   
+   if(length(unique(model.matrix(obj)[, paste(v1)])) > 2){
+     s1 <- seq(from = min(model.matrix(obj)[, paste(v1)]), to = max(model.matrix(obj)[, paste(v1)]), length.out = 25)
+   }
+   
+   if(length(unique(model.matrix(obj)[, paste(v2)])) == 2){
+     s2 <- c(min(model.matrix(obj)[, paste(v2)]), max(model.matrix(obj)[, paste(v2)]))
+   }
+   
+   if(length(unique(model.matrix(obj)[, paste(v2)])) > 2){
+     s2 <- seq(from = min(model.matrix(obj)[, v2]), to = max(model.matrix(obj)[, v2]), length.out = 25)
+   }
    
    eff1 <- b1 + b3 * s2
    var.eff1 <- var1 + s2^2 * var3 + 2 * s2 * cov13
@@ -150,7 +163,6 @@ ggintfun <- function (obj, varnames, varlabs,
      geom_ribbon(aes(x = s2, ymin = low1, ymax = up1), alpha = 0.25, color = NA) +
      geom_line() + 
      xlab(paste(vlab2)) + ylab(paste("Effect of ", vlab1, sep = ""))
-   p1 <- p1 + ggtitle(paste("Conditional effect of \n", vlab1, sep = ""))
    }
            
    if(title == TRUE){
