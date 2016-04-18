@@ -58,7 +58,7 @@ slid_mod.rse.pval <- (1 - pnorm(abs(coef(slid_mod) / slid_mod.rse))) * 2
 library(texreg)
 screenreg(list(slid_mod, slid_mod), 
           override.se = list(coef(summary(slid_mod))[, 2], slid_mod.rse),
-          override.pval = list(coef(summary(slid_mod))[, 4], slid_mod.rse.pval),
+          override.pvalues = list(coef(summary(slid_mod))[, 4], slid_mod.rse.pval),
           custom.model.names = c("Conventional SEs", "Robust SEs"),
           digits = 3)
 
@@ -104,6 +104,6 @@ agl_mod.cse.pval <- (1 - pnorm(abs(coef(agl_mod) / agl_mod.cse))) * 2
 library(texreg)
 screenreg(list(agl_mod, agl_mod), 
           override.se = list(coef(summary(agl_mod))[, 2], agl_mod.cse),
-          override.pval = list(coef(summary(agl_mod))[, 4], agl_mod.cse.pval),
+          override.pvalues = list(coef(summary(agl_mod))[, 4], agl_mod.cse.pval),
           custom.model.names = c("Conventional SEs", "Clustered SEs"),
           digits = 3)
