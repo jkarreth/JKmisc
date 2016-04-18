@@ -6,7 +6,7 @@
 #######################################################
 
 # NOTE: This code is provided for teaching purposes to students in my seminar
-# RPOS/RPAD 417, Quantitative Research Methods, at the University at Albany.
+# RPOS/RPAD 517, Quantitative Research Methods, at the University at Albany.
 # Please refer to the accompanying course materials for this course for
 # more information at <http://www.jkarreth.net/rpos517.html>.
 
@@ -93,7 +93,7 @@ agl_mod <- lm(growth ~ opengdp2 + openex2 + openimp2 + leftc2 + central, data = 
 # clSE() takes three arguments: the dataframe (df), the lm() object (mod),
 # and the name of the clustering variable (cluster)
 
-agl_mod.cse <- clSE(df = agl_dat, mod = agl_mod, cluster = "country")
+agl_mod.cse <- clSE(data = agl_dat, model = agl_mod, cluster = "country")
 
 # associated p-values, if needed
 
