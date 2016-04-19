@@ -93,7 +93,7 @@ agl_mod <- lm(growth ~ opengdp2 + openex2 + openimp2 + leftc2 + central, data = 
 # clSE() takes three arguments: the dataframe (df), the lm() object (mod),
 # and the name of the clustering variable (cluster)
 
-agl_mod.cse <- clSE(data = agl_dat, model = agl_mod, cluster = "country")
+agl_mod.cse <- clSE(mod = agl_mod, df = agl_dat, cluster = "country")
 
 # associated p-values, if needed
 
