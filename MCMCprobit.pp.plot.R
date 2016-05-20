@@ -1,8 +1,8 @@
-# R function to calculate and plot predicted probabilities after a Bayesian probit model fit by MCMCpack::MCMCprobit
+# R function to calculate and plot predicted probabilities after a Bayesian probit model
 # Johannes Karreth
 
 # model.matrix: model matrix, including intercept, focal predictor in the second column
-# mcmc_out: posterior distributions of all probit coefficients, 
+# mcmc.out: posterior distributions of all probit coefficients, 
 #  in matrix form - can easily be created from rstan, MCMCpack, R2jags, etc.
 # x.range: range of focal predictor
 

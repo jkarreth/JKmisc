@@ -7,9 +7,6 @@
 
 MCMClogit.fd.mat <- function(model_matrix, mcmc_out, credint = c(0.05, 0.95), percentiles = c(0.25, 0.75)){
 
-# model_matrix: model matrix, including intercept, focal pred. is second column
-# mcmc_out: an MCMClogit object
-
 fd.mat <- matrix(NA, ncol = 3, nrow = ncol(model_matrix) - 1)
 colnames(fd.mat) <- c("Median", "Lower90", "Upper90")
 rownames(fd.mat) <- colnames(model_matrix)[-1]
