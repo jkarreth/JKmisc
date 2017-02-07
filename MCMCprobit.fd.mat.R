@@ -11,7 +11,7 @@ MCMCprobit.fd.mat <- function(model_matrix, mcmc_out,
                               full_sims = FALSE){
 
 fd.mat <- matrix(NA, ncol = 3, nrow = ncol(model_matrix) - 1)
-colnames(fd.mat) <- c("Median", "Lower90", "Upper90")
+colnames(fd.mat) <- c("Median", "Lower", "Upper")
 rownames(fd.mat) <- colnames(model_matrix)[-1]
 
 fd.full <- matrix(rep(NA),
