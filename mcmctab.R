@@ -12,24 +12,25 @@
 
 mcmctab <- function(sims, ci = 0.95) 
 {
-  if(class(sims) == "jags" | class(sims) == "rjags"){
+  if(class(sims)[1] == "jags" || class(sims)[1] == "rjags"){
     sims <- as.matrix(as.mcmc(sims))
   }
-  if(class(sims) == "bugs"){
+  if(class(sims)[1] == "bugs"){
     sims <- sims$sims.matrix
   }  
-  if(class(sims) == "mcmc"){
+  if(class(sims)[1] == "mcmc"){
     sims <- as.matrix(sims)
   }    
-  if(class(sims) == "mcmc.list"){
+  if(class(sims)[1] == "mcmc.list"){
     sims <- as.matrix(sims)
   }      
-  if(class(sims) == "stanreg"){
+  if(class(sims)[1] == "stanreg"){
     sims <- as.matrix(fit)
   } 
-  if(class(sims) == "stanfit"){
+  if(class(sims)[1] == "stanfit"){
     sims <- as.matrix(sims)
   }     
+
   dat <- t(sims)
     mcmctab <- apply(dat, 1, 
     	function(x) c(Mean = round(mean(x), digits = 3), # Posterior mean
