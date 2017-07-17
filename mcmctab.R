@@ -25,7 +25,7 @@ mcmctab <- function(sims, ci = 0.95)
     sims <- as.matrix(sims)
   }      
   if(class(sims)[1] == "stanreg"){
-    sims <- as.matrix(fit)
+    sims <- as.matrix(sims)
   } 
   if(class(sims)[1] == "stanfit"){
     sims <- as.matrix(sims)
