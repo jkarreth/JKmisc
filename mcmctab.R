@@ -49,5 +49,9 @@ mcmctab <- function(sims, ci = 0.95, pars = NULL)
     		Upper = as.numeric(round(quantile(x, probs = c((1 + ci) / 2)), digits = 3)), # Upper CI of posterior
     		Pr = round(ifelse(mean(x) > 0, length(x[x > 0]) / length(x), length(x[x < 0]) / length(x)), digits = 3) # % of posterior draws with same sign as median
     		))
-    return(t(mcmctab))
+  
+  # return(t(mcmctab))
+  out_dat <- data.frame("Variable" = colnames(mcmctab), t(mcmctab),
+    row.names = NULL)
+  return(out_dat)
 }
