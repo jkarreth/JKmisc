@@ -35,14 +35,16 @@ mcmctab <- function(sims, ci = 0.95, pars = NULL)
   }     
 
   if(is.null(pars) == TRUE){
-    dat <- t(sims)
+    dat <- sims
   }
 
   if(is.null(pars) == FALSE){
-    dat <- t(sims[, pars])
+    dat <- sims[, pars]
   }
 
-  mcmctab <- apply(dat, 1, 
+  dat_wide <- t(dat)
+
+  mcmctab <- apply(dat_wide, 1, 
     	function(x) c(Median = round(median(x), digits = 3), # Posterior median
     		SD = round(sd(x), digits = 3), # Posterior SD
     		Lower = as.numeric(round(quantile(x, probs = c((1 - ci) / 2)), digits = 3)), # Lower CI of posterior
