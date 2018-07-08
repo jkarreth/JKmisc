@@ -14,7 +14,7 @@
 # pars: character vector of parameters to be printed; defaults to NULL (all parameters are printed)
 # Pr: print % of posterior draws with same sign as median; defaults to TRUE
 
-mcmctab <- function(sims, ci = 0.95, pars = NULL, Pr = TRUE) 
+mcmctab <- function(sims, ci = 0.95, pars = NULL, Pr = FALSE) 
 {
   if(class(sims)[1] == "jags" || class(sims)[1] == "rjags"){
     sims <- as.matrix(as.mcmc(sims))
