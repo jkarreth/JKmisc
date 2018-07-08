@@ -39,7 +39,11 @@ mcmctab <- function(sims, ci = 0.95, pars = NULL, Pr = FALSE)
     dat <- sims
   }
 
-  if(is.null(pars) == FALSE){
+  if(is.null(pars) == FALSE & length(pars) == 1){
+    dat <- sims[, grepl(x = colnames(sims), pattern = pars)]
+  }
+
+  if(is.null(pars) == FALSE & length(pars) > 1){
     dat <- sims[, pars]
   }
 
