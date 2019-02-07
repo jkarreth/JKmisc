@@ -28,7 +28,7 @@ extract.panelAR <- function (model, include.rsquared = TRUE,
   }
   if (include.panels == TRUE) {
     panels <- s$panelStructure$N.panel
-    panel.names <- "Groups"
+    panel.names <- "Num. groups"
     gof <- c(gof, panels)
     gof.names <- c(gof.names, panel.names)
     gof.decimal <- c(gof.decimal, rep(FALSE, length(panels)))
