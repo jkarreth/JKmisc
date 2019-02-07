@@ -11,7 +11,7 @@ extract.panelAR <- function (model, include.rsquared = TRUE,
   co <- s$coefficients[, 1]
   se <- s$coefficients[, 2]
   pval <- s$coefficients[, 4]
-  rs <- s$r2
+  rs <- ifelse(!is.null(s$r2), s$r2, NA)
   n <- s$panelStructure$N
   gof <- numeric()
   gof.names <- character()
