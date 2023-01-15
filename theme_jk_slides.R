@@ -1,4 +1,4 @@
-theme_jk <- function(base_size = 11, base_family = "Helvetica")
+theme_jk_slides <- function(base_size = 11, base_family = "Roboto")
 {
     theme_bw(base_size = base_size, base_family = base_family) %+replace%
         theme(
@@ -10,6 +10,8 @@ theme_jk <- function(base_size = 11, base_family = "Helvetica")
             plot.title.position = "plot",
             panel.grid.major = element_line(color = "grey90", linewidth = 0.4, linetype = 3), 
             panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 3),
-            axis.text = element_text(color = "black")
+            axis.text = element_text(color = "black"),
+            axis.title.y = element_text(angle = 0, vjust = 0),
+            axis.title.x = element_text(angle = 0, hjust = 0)
         )
 }
